@@ -29,6 +29,14 @@ public class CityService {
 			
 	}
 	
+	@Transactional
+	public CityDTO insert(CityDTO dto) {
+		City entity = new City();
+		entity.setName(dto.getName());
+		entity = repository.save(entity);
+		return new CityDTO(entity);
+	}
+	
 	public void delete(Long id) {
 		try {
 			repository.deleteById(id);
